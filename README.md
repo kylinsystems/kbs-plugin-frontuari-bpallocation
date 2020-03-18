@@ -6,11 +6,11 @@
 
 ## Description
 
-Put the plugin description here
+This plugins can allocate documents (Invoices and Payments) between two difference business partners.
 
 ## Contributors
 
-- Put the contributor list here, format: Year Name <name@email.com>.
+- Jorge Colmenarez - Frontuari, C.A. <jcolmenarez@frontuari.net>.
 
 ## Components
 
