@@ -257,7 +257,7 @@ public class FTUBPAllocation extends FTUForm {
 //		paymentTable.setColumnClass(i++, BigDecimal.class, true);      	//  9-Multiplier
 
 		//
-		i_payment = isMultiCurrency ? 7 : 5;
+		i_payment = isMultiCurrency ? 8 : 6;
 		
 
 		//  Table UI
