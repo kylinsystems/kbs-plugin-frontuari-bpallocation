@@ -20,6 +20,7 @@ package net.frontuari.bpallocation.component;
 
 import net.frontuari.bpallocation.base.FTUFormFactory;
 import net.frontuari.bpallocation.webui.apps.form.WFTUBPAllocation;
+import net.frontuari.bpallocation.webui.apps.form.WFTUVAllocation;
 
 /**
  * Form Factory
@@ -39,6 +40,7 @@ public class FormFactory extends FTUFormFactory {
 	@Override
 	protected void initialize() {
 		registerForm(WFTUBPAllocation.class);
+		registerForm(WFTUVAllocation.class);
 	}
 
 }
