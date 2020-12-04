@@ -151,8 +151,8 @@ public class FTUVAllocation extends FTUForm {
 		Vector<Vector<Object>> data = new Vector<Vector<Object>>();
 		StringBuilder sql = new StringBuilder("SELECT p.DateTrx,p.DocumentNo,p.C_Payment_ID,"  //  1..3
 			+ "c.ISO_Code,p.PayAmt,"                            //  4..5
-			+ "currencyConvert(p.PayAmt,p.C_Currency_ID,?,?,p.C_ConversionType_ID,p.AD_Client_ID,p.AD_Org_ID),"//  6   #1, #2
-			+ "currencyConvert(paymentAvailable(C_Payment_ID),p.C_Currency_ID,?,?,p.C_ConversionType_ID,p.AD_Client_ID,p.AD_Org_ID),"  //  7   #3, #4
+			+ "currencyConvert(p.PayAmt,p.C_Currency_ID,?,p.DateTrx,p.C_ConversionType_ID,p.AD_Client_ID,p.AD_Org_ID),"//  6   #1, #2
+			+ "currencyConvert(paymentAvailable(C_Payment_ID),p.C_Currency_ID,?,p.DateTrx,p.C_ConversionType_ID,p.AD_Client_ID,p.AD_Org_ID),"  //  7   #3, #4
 			+ "p.MultiplierAP "
 			+ ",bp.Name " // 9
 			+ "FROM C_Payment_v p"		//	Corrected for AP/AR 
@@ -177,13 +177,13 @@ public class FTUVAllocation extends FTUForm {
 		{
 			pstmt = DB.prepareStatement(sql.toString(), null);
 			pstmt.setInt(1, m_C_Currency_ID);
-			pstmt.setTimestamp(2, (Timestamp)date);
-			pstmt.setInt(3, m_C_Currency_ID);
-			pstmt.setTimestamp(4, (Timestamp)date);
-			pstmt.setInt(5, m_C_BPartner_ID);
-			pstmt.setInt(6, m_C_BPartner2_ID);
+			//pstmt.setTimestamp(2, (Timestamp)date);
+			pstmt.setInt(2, m_C_Currency_ID);
+			//pstmt.setTimestamp(4, (Timestamp)date);
+			pstmt.setInt(3, m_C_BPartner_ID);
+			pstmt.setInt(4, m_C_BPartner2_ID);
 			if (!isMultiCurrency)
-				pstmt.setInt(7, m_C_Currency_ID);
+				pstmt.setInt(5, m_C_Currency_ID);
 			rs = pstmt.executeQuery();
 			while (rs.next())
 			{
@@ -288,8 +288,8 @@ public class FTUVAllocation extends FTUForm {
 		Vector<Vector<Object>> data = new Vector<Vector<Object>>();
 		StringBuilder sql = new StringBuilder("SELECT i.DateInvoiced,i.DocumentNo,i.C_Invoice_ID," //  1..3
 			+ "c.ISO_Code,i.GrandTotal*i.MultiplierAP, "                            //  4..5    Orig Currency
-			+ "currencyConvert(i.GrandTotal*i.MultiplierAP,i.C_Currency_ID,?,?,i.C_ConversionType_ID,i.AD_Client_ID,i.AD_Org_ID), " //  6   #1  Converted, #2 Date
-			+ "currencyConvert(invoiceOpen(C_Invoice_ID,C_InvoicePaySchedule_ID),i.C_Currency_ID,?,?,i.C_ConversionType_ID,i.AD_Client_ID,i.AD_Org_ID)*i.MultiplierAP, "  //  7   #3, #4  Converted Open
+			+ "currencyConvert(i.GrandTotal*i.MultiplierAP,i.C_Currency_ID,?,i.DateInvoiced,i.C_ConversionType_ID,i.AD_Client_ID,i.AD_Org_ID), " //  6   #1  Converted, #2 Date
+			+ "currencyConvert(invoiceOpen(C_Invoice_ID,C_InvoicePaySchedule_ID),i.C_Currency_ID,?,i.DateInvoiced,i.C_ConversionType_ID,i.AD_Client_ID,i.AD_Org_ID)*i.MultiplierAP, "  //  7   #3, #4  Converted Open
 			+ "currencyConvert(invoiceDiscount"                               //  8       AllowedDiscount
 			+ "(i.C_Invoice_ID,?,C_InvoicePaySchedule_ID),i.C_Currency_ID,?,i.DateInvoiced,i.C_ConversionType_ID,i.AD_Client_ID,i.AD_Org_ID)*i.Multiplier*i.MultiplierAP,"               //  #5, #6
 			+ "i.MultiplierAP "
@@ -315,15 +315,15 @@ public class FTUVAllocation extends FTUForm {
 		{
 			pstmt = DB.prepareStatement(sql.toString(), null);
 			pstmt.setInt(1, m_C_Currency_ID);
-			pstmt.setTimestamp(2, (Timestamp)date);
-			pstmt.setInt(3, m_C_Currency_ID);
-			pstmt.setTimestamp(4, (Timestamp)date);
-			pstmt.setTimestamp(5, (Timestamp)date);
-			pstmt.setInt(6, m_C_Currency_ID);
-			pstmt.setInt(7, m_C_BPartner_ID);
-			pstmt.setInt(8, m_C_BPartner2_ID);
+			//pstmt.setTimestamp(2, (Timestamp)date);
+			pstmt.setInt(2, m_C_Currency_ID);
+			pstmt.setTimestamp(3, (Timestamp)date);
+			//pstmt.setTimestamp(5, (Timestamp)date);
+			pstmt.setInt(4, m_C_Currency_ID);
+			pstmt.setInt(5, m_C_BPartner_ID);
+			pstmt.setInt(6, m_C_BPartner2_ID);
 			if (!isMultiCurrency)
-				pstmt.setInt(9, m_C_Currency_ID);
+				pstmt.setInt(7, m_C_Currency_ID);
 			rs = pstmt.executeQuery();
 			while (rs.next())
 			{
