@@ -1,3 +1,7 @@
+#
+
+<EntityType>FTU</EntityType> not existed, should be added manually before install this plugin
+
 # net.frontuari.bpallocation
 
 ## Standard

@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Bundle-Category: idempiere-plugin
 Bundle-ManifestVersion: 2
-Bundle-Name: net.frontuari.bpallocation
-Bundle-SymbolicName: net.frontuari.bpallocation;singleton:=true
-Bundle-Version: 7.1.0.qualifier
+Bundle-Name: KBS Plugin : Frontuari bpallocation
+Bundle-SymbolicName: com.kylinsystems.kbs.plugins.frontuari.bpallocation;singleton:=true
+Bundle-Version: 8.1.0.qualifier
 Bundle-Vendor: Frontuari, C.A. <http://frontuari.net>
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.apache.commons.lang3,
