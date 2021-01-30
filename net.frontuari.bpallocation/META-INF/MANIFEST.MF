@@ -1,10 +1,10 @@
 Manifest-Version: 1.0
-Bundle-Category: idempiere-plugin
+Bundle-Category: kbs-plugin
 Bundle-ManifestVersion: 2
 Bundle-Name: KBS Plugin : Frontuari bpallocation
 Bundle-SymbolicName: com.kylinsystems.kbs.plugins.frontuari.bpallocation;singleton:=true
-Bundle-Version: 8.1.0.qualifier
-Bundle-Vendor: Frontuari, C.A. <http://frontuari.net>
+Bundle-Version: 8.2.0.qualifier
+Bundle-Vendor: Frontuari, C.A. <http://frontuari.net>, KSYS <http://www.kylinsystems.com>
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.apache.commons.lang3,
  org.adempiere.base,
